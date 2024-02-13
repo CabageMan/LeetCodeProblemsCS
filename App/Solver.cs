@@ -1,6 +1,6 @@
 ﻿namespace LeetCodeProblems;
 
-class Program
+class Solver
 {
     static void Main(string[] args)
     {
