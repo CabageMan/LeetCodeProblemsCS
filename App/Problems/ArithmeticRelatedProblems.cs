@@ -1,18 +1,20 @@
 
 
+using System.ComponentModel;
+
 namespace LeetCodeProblems;
 
 public struct ArithmeticRelatedProblems
 {
     /*
-  Two Sum
-  -------------------------------------------------------------------------------
-  Given an array of integers nums and an integer target,
-  return indices of the two numbers such that they add up to target.
-  You may assume that each input would have exactly one solution,
-  and you may not use the same element twice.
-  You can return the answer in any order.
-   */
+    Two Sum
+    -------------------------------------------------------------------------------
+    Given an array of integers nums and an integer target,
+    return indices of the two numbers such that they add up to target.
+    You may assume that each input would have exactly one solution,
+    and you may not use the same element twice.
+    You can return the answer in any order.
+    */
     public static int[] TwoSum(int[] nums, int target)
     {
         for (int i = 0; i < nums.Length; i++)
@@ -29,13 +31,13 @@ public struct ArithmeticRelatedProblems
     }
 
     /*
-      Add Two Numbers
-      -------------------------------------------------------------------------------
-      You are given two non-empty linked lists representing two non-negative integers.
-      The digits are stored in reverse order, and each of their nodes contains a single digit.
-      Add the two numbers and return the sum as a linked list.
-      You may assume the two numbers do not contain any leading zero, except the number 0 itself.
-       */
+    Add Two Numbers
+    -------------------------------------------------------------------------------
+    You are given two non-empty linked lists representing two non-negative integers.
+    The digits are stored in reverse order, and each of their nodes contains a single digit.
+    Add the two numbers and return the sum as a linked list.
+    You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+    */
     public static ListNode AddTwoNumbers(ListNode? l1, ListNode? l2)
     {
         ListNode resultNode = new();
@@ -74,6 +76,45 @@ public struct ArithmeticRelatedProblems
         }
 
         return resultNode;
+    }
+
+    /*
+    Median of Two Sorted Arrays
+    -------------------------------------------------------------------------------
+    Given two sorted arrays nums1 and nums2 of size m and n respectively,
+    return the median of the two sorted arrays.
+    The overall run time complexity should be O(log (m+n)).
+    */
+    public static double FindMedianSortedArrays(int[] nums1, int[] nums2) {
+        int counterOfNums1 = 0;
+        int counterOfNums2 = 0;
+        int counterOfMerged = 0;
+        int totalLength = nums1.Length + nums2.Length;
+        int[] mergedArray = new int[totalLength];
+
+        while (counterOfNums1 < nums1.Length && counterOfNums2 < nums2.Length)
+        {
+            mergedArray[counterOfMerged++] = nums1[counterOfNums1] < nums2[counterOfNums2]
+                ? nums1[counterOfNums1++] : nums2[counterOfNums2++];
+        }
+        while (counterOfNums1 < nums1.Length)
+        {
+            mergedArray[counterOfMerged++] = nums1[counterOfNums1++]; 
+        }
+        while (counterOfNums2 < nums2.Length)
+        {
+            mergedArray[counterOfMerged++] = nums2[counterOfNums2++];
+        }
+
+        if (totalLength % 2 != 0)
+        {
+            return mergedArray[(int)Math.Round((double)(totalLength - 1) / 2)];
+        }
+        else
+        {
+            int centralIndex = totalLength / 2;
+            return (double)(mergedArray[centralIndex - 1] + mergedArray[centralIndex]) / 2;
+        }
     }
 }
 

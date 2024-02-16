@@ -71,4 +71,40 @@ public class ArithmeticRealtedProblemsTests
             Assert.That(thirdActualOutput.ToArray().SequenceEqual(thirdExpectedOutput.ToArray()), Is.True);
         });
     }
+
+    [Test]
+    public void ShouldFindMedianSortedArrays()
+    {
+        // Explanation: merged array = [1,2,3] and median is 2.
+        int[] firstNums1 = [1, 3];
+        int[] firstNums2 = [2];
+        double firstExpectedOutput = 2.0;
+        double firstActualOutput = ArithmeticRelatedProblems.FindMedianSortedArrays(firstNums1, firstNums2);
+
+        // Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+        int[] secondNums1 = [1, 2];
+        int[] secondNums2 = [3, 4];
+        double secondExpectedOutput = 2.5;
+        double secondActualOutput = ArithmeticRelatedProblems.FindMedianSortedArrays(secondNums1, secondNums2);
+
+        // Explanation: merged array = [1,5,7,8,9] and median is 7.
+        int[] thirdNums1 = [1, 7, 9];
+        int[] thirdNums2 = [5, 8];
+        double thirdExpectedOutput = 7.0;
+        double thirdActualOutput = ArithmeticRelatedProblems.FindMedianSortedArrays(thirdNums1, thirdNums2);
+
+        // Explanation: merged array = [1,3,5,7,8,9] and median is (5 + 7) / 2 = 6.
+        int[] fourthNums1 = [1, 7, 9];
+        int[] fourthNums2 = [3, 5, 8];
+        double fourthExpectedOutput = 6.0;
+        double fourthActualOutput = ArithmeticRelatedProblems.FindMedianSortedArrays(fourthNums1, fourthNums2);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstActualOutput, Is.EqualTo(firstExpectedOutput));
+            Assert.That(secondActualOutput, Is.EqualTo(secondExpectedOutput));
+            Assert.That(thirdActualOutput, Is.EqualTo(thirdExpectedOutput));
+            Assert.That(fourthActualOutput, Is.EqualTo(fourthExpectedOutput));
+        });
+    }
 }
