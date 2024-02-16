@@ -5,9 +5,10 @@ class Solver
     static void Main(string[] args)
     {
         Console.WriteLine("Let solve it!");
-        ListNode firstNode = new(2, new(4));
-        ListNode secondNode = new(5, new(6, new(4)));
-        ListNode thirdNode = new(0);
-        Console.WriteLine($"Array from node {string.Join(",", secondNode.ToArray())}");
+
+        // Explanation: The answer is "abc", with the length of 3.
+        string firstInput = "abcabcbb";
+        int firstActualOutput = StringsRelatedProblems.LengthOfLongestSubstring(firstInput);
+        Console.WriteLine($"Substring length {firstActualOutput}");
     }
 }
