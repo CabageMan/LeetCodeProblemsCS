@@ -62,4 +62,30 @@ public class StringsRelatedProblemsTests
             Assert.That(fifthActualOutput, Is.EqualTo(fifthExpectedOutput));
         });
     }
+
+    [Test]
+    public void ShouldZigzagConvert()
+    {
+        String firstInput = "PAYPALISHIRING";
+        int firstNumRows = 3;
+        String firstExpectedOutput = "PAHNAPLSIIGYIR";
+        String firstActualOutput = StringsRelatedProblems.ZigzagConvert(firstInput, firstNumRows);
+
+        String secondInput = "PAYPALISHIRING";
+        int secondNumRows = 4;
+        String secondExpectedOutput = "PINALSIGYAHRPI";
+        String secondActualOutput = StringsRelatedProblems.ZigzagConvert(secondInput, secondNumRows);
+
+        String thirdInput = "A";
+        int thirdNumRows = 1;
+        String thirdExpectedOutput = "A";
+        String thirdActualOutput = StringsRelatedProblems.ZigzagConvert(thirdInput, thirdNumRows);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstActualOutput, Is.EqualTo(firstExpectedOutput));
+            Assert.That(secondActualOutput, Is.EqualTo(secondExpectedOutput));
+            Assert.That(thirdActualOutput, Is.EqualTo(thirdExpectedOutput));
+        });
+    }
 }
