@@ -85,7 +85,8 @@ public struct ArithmeticRelatedProblems
     return the median of the two sorted arrays.
     The overall run time complexity should be O(log (m+n)).
     */
-    public static double FindMedianSortedArrays(int[] nums1, int[] nums2) {
+    public static double FindMedianSortedArrays(int[] nums1, int[] nums2)
+    {
         int counterOfNums1 = 0;
         int counterOfNums2 = 0;
         int counterOfMerged = 0;
@@ -99,7 +100,7 @@ public struct ArithmeticRelatedProblems
         }
         while (counterOfNums1 < nums1.Length)
         {
-            mergedArray[counterOfMerged++] = nums1[counterOfNums1++]; 
+            mergedArray[counterOfMerged++] = nums1[counterOfNums1++];
         }
         while (counterOfNums2 < nums2.Length)
         {
@@ -115,6 +116,29 @@ public struct ArithmeticRelatedProblems
             int centralIndex = totalLength / 2;
             return (double)(mergedArray[centralIndex - 1] + mergedArray[centralIndex]) / 2;
         }
+    }
+
+    /*
+    Given a signed 32-bit integer x, return x with its digits reversed. 
+    If reversing x causes the value to go outside the signed 32-bit integer 
+    range [-2^31, 2^31 - 1], then return 0.
+    Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+    Example 1:
+    Input: x = 123
+    Output: 321
+    
+    Example 2:
+    Input: x = -123
+    Output: -321
+
+    Example 3:
+    Input: x = 120
+    Output: 21
+    */
+    public static int ReverseInteger(int x)
+    {
+
+        return 0;
     }
 }
 

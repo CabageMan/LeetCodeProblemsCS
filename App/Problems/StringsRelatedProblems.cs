@@ -128,6 +128,7 @@ public struct StringsRelatedProblems
   And then read line by line: "PINALSIGYAHRPI"
   Write the code that will take a string and make this conversion given a number of rows:
   string convert(string s, int numRows);
+  
   Solution:
   Let replace chars by indexes for convinience:
   1       9           17

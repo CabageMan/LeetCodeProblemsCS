@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace LeetCodeProblems.Tests;
 
 [TestFixture]
@@ -105,6 +107,29 @@ public class ArithmeticRealtedProblemsTests
             Assert.That(secondActualOutput, Is.EqualTo(secondExpectedOutput));
             Assert.That(thirdActualOutput, Is.EqualTo(thirdExpectedOutput));
             Assert.That(fourthActualOutput, Is.EqualTo(fourthExpectedOutput));
+        });
+    }
+
+    [Test]
+    public void ShouldReverseInteger()
+    {
+        int firstInput = 123;
+        int firstExpectedOutput = 321;
+        int firstActualOutput = ArithmeticRelatedProblems.ReverseInteger(firstInput);
+
+        int secondInput = -123;
+        int secondExpectedOutput = -321;
+        int secondActualOutput = ArithmeticRelatedProblems.ReverseInteger(secondInput);
+
+        int thirdInput = 120;
+        int thirdExpectedOutput = 21;
+        int thirdActualOutput = ArithmeticRelatedProblems.ReverseInteger(firstInput);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstActualOutput, Is.EqualTo(firstExpectedOutput));
+            Assert.That(secondActualOutput, Is.EqualTo(secondExpectedOutput));
+            Assert.That(thirdActualOutput, Is.EqualTo(thirdExpectedOutput));
         });
     }
 }
