@@ -66,6 +66,11 @@ public class StringsRelatedProblemsTests
     [Test]
     public void ShouldZigzagConvert()
     {
+        String zeroInput = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghij";
+        int zeroNumRows = 6;
+        String zeroExpectedOutput = "aaaaabjbjbjbjbjcicicicicidhdhdhdhdhegegegegegfffff";
+        String zeroActualOutput = StringsRelatedProblems.ZigzagConvert(zeroInput, zeroNumRows);
+
         String firstInput = "PAYPALISHIRING";
         int firstNumRows = 3;
         String firstExpectedOutput = "PAHNAPLSIIGYIR";
@@ -81,11 +86,18 @@ public class StringsRelatedProblemsTests
         String thirdExpectedOutput = "A";
         String thirdActualOutput = StringsRelatedProblems.ZigzagConvert(thirdInput, thirdNumRows);
 
+        String fourthInput = "AB";
+        int fourthNumRows = 1;
+        String fourthExpectedOutput = "AB";
+        String fourthActualOutput = StringsRelatedProblems.ZigzagConvert(fourthInput, fourthNumRows);
+
         Assert.Multiple(() =>
         {
+            Assert.That(zeroActualOutput, Is.EqualTo(zeroExpectedOutput));
             Assert.That(firstActualOutput, Is.EqualTo(firstExpectedOutput));
             Assert.That(secondActualOutput, Is.EqualTo(secondExpectedOutput));
             Assert.That(thirdActualOutput, Is.EqualTo(thirdExpectedOutput));
+            Assert.That(fourthActualOutput, Is.EqualTo(fourthExpectedOutput));
         });
     }
 }

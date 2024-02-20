@@ -1,4 +1,6 @@
 
+using System.Data.Common;
+
 namespace LeetCodeProblems;
 
 public struct StringsRelatedProblems
@@ -126,10 +128,53 @@ public struct StringsRelatedProblems
   And then read line by line: "PINALSIGYAHRPI"
   Write the code that will take a string and make this conversion given a number of rows:
   string convert(string s, int numRows);
+  Solution:
+  Let replace chars by indexes for convinience:
+  1       9           17
+  2     8 10       16 18
+  3   7   11    15    19
+  4 6     12 14       20
+  5       13          21 ...
+  The distribution of chars by COLUMNS in a given zigzag configuration obeys the formula: 
+  charIndex + (numRows * 2 - 2)
+  where: 
+    charIndex - the current index of the char in each column 1, 9, 17, 2, 10, 18, 3, 11,...
+    numRows - the constant given in params.
+    (numRows * 2 - 2) is the fixed column shift depends on numRows.
+  In this example numRows = 5 so char index for second row: 1 + (5 * 2 - 2) = 9
+  third: 9 + (5 * 2 - 2) = 17
+  The distribution of chars by DIAGONALS in a given zigzag configuration obeys the formula: 
+  columnIndex - (row - 1) * 2
+  where:
+    columnIndex - calculated before
+    row - the number of current row: 1, 2, 3,...
+    columnIndex - (row - 1) * 2 or columnIndex - (row * 2 - 2) - is the fixed diagonal shift 
+    depends on number of the current row. 
+    For second row: columnIndex = 2 + (5 * 2 - 2) = 10; diagonalIndex = 10 - (2 * 2 - 2) = 8
    */
   public static string ZigzagConvert(string s, int numRows)
   {
+    char[] zigZag = new char[s.Length];
+    int zigZagIndex = 0; // Start saving to array from 0
+    for (int r = 1; r <= numRows; r++) // Start from 1 to simplify thinking
+    {
+      int charIndex = r;
+      while (charIndex <= s.Length && zigZagIndex < s.Length)
+      {
+        zigZag[zigZagIndex++] = s[charIndex - 1];
+        int columnShift = Math.Max(numRows * 2 - 2, 1); // 1 for cases where numRows is 1
+        int columnIndex = charIndex + columnShift;
+        charIndex = columnIndex;
 
-    return "";
+        int diagonalShift = r * 2 - 2;
+        int diagonalIndex = columnIndex - diagonalShift;
+        if (diagonalShift > 0 && diagonalShift < columnShift && diagonalIndex <= s.Length)
+        {
+          zigZag[zigZagIndex++] = s[diagonalIndex - 1];
+        }
+
+      }
+    }
+    return string.Join("", zigZag);
   }
 }
