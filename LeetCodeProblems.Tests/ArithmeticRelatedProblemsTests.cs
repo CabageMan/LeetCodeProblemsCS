@@ -123,13 +123,23 @@ public class ArithmeticRealtedProblemsTests
 
         int thirdInput = 120;
         int thirdExpectedOutput = 21;
-        int thirdActualOutput = ArithmeticRelatedProblems.ReverseInteger(firstInput);
+        int thirdActualOutput = ArithmeticRelatedProblems.ReverseInteger(thirdInput);
 
+        int fourthInput = 1534236469;
+        int fourthExpectedOutput = 0;
+        int fourthActualOutput = ArithmeticRelatedProblems.ReverseInteger(fourthInput);
+
+        int fifthInput = -2147483648;
+        int fifthExpectedOutput = 0;
+        int fifththActualOutput = ArithmeticRelatedProblems.ReverseInteger(fifthInput);
+        
         Assert.Multiple(() =>
         {
             Assert.That(firstActualOutput, Is.EqualTo(firstExpectedOutput));
             Assert.That(secondActualOutput, Is.EqualTo(secondExpectedOutput));
             Assert.That(thirdActualOutput, Is.EqualTo(thirdExpectedOutput));
+            Assert.That(fourthActualOutput, Is.EqualTo(fourthExpectedOutput));
+            Assert.That(fifththActualOutput, Is.EqualTo(fifthExpectedOutput));
         });
     }
 }

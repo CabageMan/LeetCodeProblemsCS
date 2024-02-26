@@ -6,15 +6,7 @@ class Solver
     {
         Console.WriteLine("Let solve it!");
 
-        // String zeroInput = "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghij";
-        // String zeroInput = "PAYPALISHIRING";
-
-        String zeroInput = "AB";
-        
-        int zeroNumRows = 1;
-        String zeroExpectedOutput = "";
-        String zeroActualOutput = StringsRelatedProblems.ZigzagConvert(zeroInput, zeroNumRows);
-
-        Console.WriteLine($"ZigZag: {zeroActualOutput}");
+        int test = ArithmeticRelatedProblems.ReverseInteger(Int32.MinValue);
+        Console.WriteLine($"Test: {test}");
     }
 }

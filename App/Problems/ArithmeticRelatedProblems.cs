@@ -137,8 +137,18 @@ public struct ArithmeticRelatedProblems
     */
     public static int ReverseInteger(int x)
     {
-
-        return 0;
+        try
+        {
+            int signNumb = x < 0 ? -1 : 1;
+            string numberString = Math.Abs(x).ToString();
+            var reversedString = new string(numberString.ToCharArray().Reverse().ToArray());
+            return int.Parse(reversedString) * signNumb;
+        }
+        catch (OverflowException e)
+        {
+            Console.WriteLine($"The reversed number is out of Int32 bounds: {e.Message}");
+            return 0;
+        }
     }
 }
 
